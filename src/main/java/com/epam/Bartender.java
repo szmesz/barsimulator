@@ -13,12 +13,16 @@ public class Bartender extends Person {
 	public Bartender() {
 	}
 
-	public void washTheDirtyGlasses() {
+	public int washTheDirtyGlasses() {
+		int numberOfDirtyGlasses = 0;
 		if (dirtyGlass > 0) {
 			dirtyGlass--;
-			System.out.println("Bartender has washed some dirty glasses. The number of dirty glasses: " + dirtyGlass);
+			numberOfDirtyGlasses = dirtyGlass;
+			System.out.println("Bartender has washed some dirty glasses. The number of dirty glasses: " + numberOfDirtyGlasses);
+			return numberOfDirtyGlasses;
 		} else {
-			System.out.println("There is no dirty glass in the bar.");
+			System.out.println("There is no dirty glass in the bar. The number of dirty glasses in the bar: " + numberOfDirtyGlasses);
+			return numberOfDirtyGlasses;
 		}
 	}
 
