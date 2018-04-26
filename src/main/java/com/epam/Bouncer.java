@@ -55,7 +55,7 @@ public class Bouncer extends Person {
 	}
 
 	@Override
-	public void drinksSomething(Bartender bartender, Drink drink) {
+	public String drinksSomething(Bartender bartender, Drink drink) {
 		if (working == false && isInTheBar()) {
 			super.drinksSomething(bartender, drink);
 			System.out.println(getName() + " the bouncer is not working so drinks: " + drink.getName());
@@ -64,6 +64,7 @@ public class Bouncer extends Person {
 			isDrinkingNonAlcoholic(bartender, drink, 0);
 			System.out.println(getName() + " the bouncer is working so drinks only non alcoholic beverages");
 		}
+		return null;
 
 	}
 

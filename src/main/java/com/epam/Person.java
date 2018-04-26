@@ -107,7 +107,7 @@ public class Person {
 			seeIfDrunknessIsOverFourty();
 			drinking();
 			moneyAndDrunkness();
-		} else if (inTheBar == false) {
+		} else if (!inTheBar) {
 			notInTheBar();
 		} else {
 			noSufficientMoney();
@@ -120,20 +120,20 @@ public class Person {
 		return notPresent;
 	}
 
-	public String drinking() {
+	private String drinking() {
 		String drinks = getName() + " is drinking.";
 		System.out.println(drinks);
 		return drinks;
 	}
 
-	public String moneyAndDrunkness() {
+	private String moneyAndDrunkness() {
 		String moneyDrunkness = getName() + "'s money is: " + money + "; " + getName() + "'s drunkness is: "
 				+ drunkness;
 		System.out.println(moneyDrunkness);
 		return moneyDrunkness;
 	}
 
-	public int hasEnoughmoneyToDrinkOne() {
+	private int hasEnoughmoneyToDrinkOne() {
 		if (money > 0) {
 			return money;
 		} else {
@@ -142,52 +142,52 @@ public class Person {
 		return money;
 	}
 
-	public String noSufficientMoney() {
+	private String noSufficientMoney() {
 		String notEnoughMoney = "You have no sufficient amount of money to buy a drink";
 		System.out.println(notEnoughMoney);
 		return notEnoughMoney;
 	}
 
-	public void generateDirtyGlass(Bartender bartender) {
+	private void generateDirtyGlass(Bartender bartender) {
 		bartender.setDirtyGlass(bartender.getDirtyGlass() + 1);
 	}
 
-	public void giveMoneyToBartender(Bartender bartender) {
+	private void giveMoneyToBartender(Bartender bartender) {
 		bartender.setMoney(bartender.getMoney() + 1);
 	}
 
-	public void fallenAsleep() {
+	protected void fallenAsleep() {
 		System.out.println("My drunkness is: " + drunkness + " Good night!");
 		drunkness = 0;
 	}
 
-	public void goneHome() {
+	protected void goneHome() {
 		inTheBar = false;
 		System.out.println(name + " went home.");
 		drunkness = 0;
 	}
 
-	public void arrivedToTheBar() {
-		inTheBar = true;
-		System.out.println(name + "just arrived to the bar.");
-	}
-
-	public void drinksSomething(Bartender bartender, Drink drink) {
+	public String drinksSomething(Bartender bartender, Drink drink) {
+		String response;
 		if (inTheBar && hasEnoughMoneyToDrinkSomething(drink) != 0) {
 			money -= drink.getPrice();
 			drunkness += drink.getAlcVol();
 			giveMoneyToBartender(bartender, drink);
 			generateDirtyGlass(bartender);
 			seeIfDrunknessIsOverFourty();
-			System.out.println(getName() + " is drinking: " + drink.getName());
-			System.out
-					.println(getName() + "'s money is: " + money + "; " + getName() + "'s drunkness is: " + drunkness);
+
+			response = getName() + " is drinking: " + drink.getName() + " " + getName() + "'s money is: " + money + "; "
+					+ getName() + "'s drunkness is: " + drunkness;
+
 		} else {
-			System.out.println("you have no sufficient amount of money to buy anything");
+
+			response = "you have no sufficient amount of money to buy anything";
 		}
+		System.out.println(response);
+		return response;
 	}
 
-	public int hasEnoughMoneyToDrinkSomething(Drink drink) {
+	private int hasEnoughMoneyToDrinkSomething(Drink drink) {
 		if (drink.getPrice() < money && money > 0) {
 			return money;
 		} else {
@@ -196,12 +196,12 @@ public class Person {
 		return money;
 	}
 
-	public void giveMoneyToBartender(Bartender bartender, Drink drink) {
+	private void giveMoneyToBartender(Bartender bartender, Drink drink) {
 		bartender.setMoney(bartender.getMoney() + drink.getPrice());
 
 	}
 
-	public boolean seeIfDrunknessIsOverFourty() {
+	boolean seeIfDrunknessIsOverFourty() {
 		boolean res;
 		if (drunkness >= 40) {
 			res = true;
@@ -212,7 +212,7 @@ public class Person {
 		return res;
 	}
 
-	public void isDrinkingNonAlcoholic(Bartender bartender, Drink drink, double getAlcVol) {
+	protected void isDrinkingNonAlcoholic(Bartender bartender, Drink drink, double getAlcVol) {
 		drink.setAlcVol(0);
 	}
 

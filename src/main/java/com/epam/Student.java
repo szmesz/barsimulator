@@ -40,22 +40,14 @@ public class Student extends Person {
 		return super.isInTheBar();
 	}
 
-	@Override
 	public void fallenAsleep() {
 		super.fallenAsleep();
 	}
 
-	@Override
 	public void goneHome() {
 		super.goneHome();
 	}
 
-	@Override
-	public void arrivedToTheBar() {
-		super.arrivedToTheBar();
-	}
-
-	@Override
 	public boolean setInTheBar(boolean isInTheBar) {
 		return super.setInTheBar(isInTheBar);
 	}
@@ -71,8 +63,8 @@ public class Student extends Person {
 	}
 
 	@Override
-	public void drinksSomething(Bartender bartender, Drink drink) {
-		super.drinksSomething(bartender, drink);
+	public String drinksSomething(Bartender bartender, Drink drink) {
+		return super.drinksSomething(bartender, drink);
 	}
 
 	@Override
