@@ -1,8 +1,6 @@
 package com.epam;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -116,14 +114,15 @@ public class TestPerson {
 
 	@Test
 	public void testIfPersonHasNotEnoughMoneyShouldNotDrinkSomething() {
-		person.setMoney(0);
+		person.setMoney(3);
 		person.setDrunkness(10);
 		Bartender bartender = new Bartender();
 		Drink drink = new Drink();
 		drink.setPrice(5);
 		person.drinksSomething(bartender, drink);
 
-		assertEquals(0, person.getMoney());
+		assertEquals(3, person.getMoney());
+		assertEquals(10, person.getDrunkness());
 
 	}
 	

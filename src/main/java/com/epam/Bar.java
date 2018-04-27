@@ -22,9 +22,9 @@ public class Bar {
 		bartender.washTheDirtyGlasses();
 		Beer beer = new Beer(2, 1, drink.getName());
 		student.drinksSomething(bartender, beer);
-		student.isStudied(3);
+		student.studied(3);
 		student.drinksOne(bartender);
-		student.isStudied(2);
+		student.studied(2);
 		Person p2 = new Person("Bill", 28, true, 0, 0, true);
 		Beer beer1 = new Beer(2, 1, drink.getName());
 		Bouncer bouncer = new Bouncer("Robert", 40, true, 20, 0, true, false);
@@ -35,7 +35,7 @@ public class Bar {
 		Drink miscDrink = new MiscDrink(wine, beer1, drink, beer);
 		joe.drinksSomething(bartender, miscDrink);
 		student.drinksSomething(bartender, miscDrink);
-		student.isStudied(3);
+		student.studied(3);
 
 	}
 }

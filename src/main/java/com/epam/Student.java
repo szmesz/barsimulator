@@ -11,6 +11,10 @@ public class Student extends Person {
 		this.money = money;
 	}
 
+	public Student() {
+
+	}
+
 	public int getScholarship() {
 		return scholarship;
 	}
@@ -72,17 +76,21 @@ public class Student extends Person {
 		super.makeingTrouble(bouncer, p1, p2, numberOfBouncersInTheBar);
 	}
 
-	public void addScholarship() {
-		this.money = this.scholarship + this.money;
+	@Override
+	boolean seeIfDrunknessIsOverFourty() {
+		return super.seeIfDrunknessIsOverFourty();
 	}
 
-	public void isStudied(int hoursOfStudy) {
-		this.scholarship = hoursOfStudy;
+	private int addScholarship() {
+		return this.money = this.scholarship + this.money;
+	}
+	public int studied(int hoursOfStudy) {
+		this.scholarship = 0;
+		this.scholarship += hoursOfStudy;
 		addScholarship();
-
 		System.out.println(getName() + " studied " + hoursOfStudy + " hours. Student's scholarship is: " + scholarship
 				+ " Student's money is: " + this.money);
-		this.scholarship = 0;
+		return this.scholarship;
 	}
 
 }

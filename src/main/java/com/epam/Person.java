@@ -113,7 +113,7 @@ public class Person {
 			noSufficientMoney();
 		}
 	}
-
+	
 	private String notInTheBar() {
 		String notPresent = getName() + " is not in the bar.";
 		System.out.println(notPresent);
